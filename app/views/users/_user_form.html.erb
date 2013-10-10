@@ -1,8 +1,30 @@
-	<%= f.label :username, 'Username:' %>	
-	<%= f.text_field :username %>
+  <% if @user.errors.any? %>
+  <div class='alert alert-danger' >
+  <p> There are <%= @user.errors.count %> errors </p>
+  </div>
+    <ul>
+        <% @user.errors.full_messages.each do |message|%>
+          <li><%=message%></li>
+        <% end %>
+    </ul>
+  <% end %>
+    
+  <div class='form-group'>
+  <%= f.label :username, 'Username:' %>	
+  <%= f.text_field :username, class: 'form-control' %>
+  </div>
+
+  <div class='form-group'>
   <%= f.label :password, 'Password:' %>	
-  <%= f.text_field :password, type:"password"%>
+  <%= f.text_field :password, type:"password", class: 'form-control'%>
+  </div>
+    
+  <div class='form-group'>
   <%= f.label :password_confirmation, 'Confirmation:' %>	
-  <%= f.text_field :password_confirmation, type:"password"%>
+  <%= f.text_field :password_confirmation, type:"password", class: 'form-control'%>
+  </div>
+    
+  <div class='form-group'>
   <%= f.label :email, "Email:" %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email, class: 'form-control' %>
+  </div>

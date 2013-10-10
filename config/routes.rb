@@ -1,6 +1,8 @@
 GameContestServer::Application.routes.draw do
   resources :users
   get 'signup', to: 'users#new', as: 'signup'
+  get '/index', to: 'users#index', as: 'index'
+  get '/new', to: 'users#new', as: 'new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  
+  <% flash.each do |level, message| %>
+  <div class="alert alert-<%=level %>"><% message %></div>
+  <% end %>
+    
+  <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Current Users",    'index' %></li>
+              <li><%= link_to "Sign Up",    'new' %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+  </header>
+  
+  <div class="container">
+  <%= yield %>
+  </div>
 
 </body>
 </html>
