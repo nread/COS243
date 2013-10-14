@@ -1,13 +1,17 @@
 GameContestServer::Application.routes.draw do
+  root 'users#index'
   resources :users
-  get 'signup', to: 'users#new', as: 'signup'
-  get '/index', to: 'users#index', as: 'index'
-  get '/new', to: 'users#new', as: 'new'
+  #get 'signup', to: 'users#new', as: 'signup'
+  match '/signup_path', to: 'users#new',  via: 'get'
+  match '/root_path', to: 'users#index', via: 'get'
+  match '/users_path', to: 'users#index', via: 'get'
+  #get '/index', to: 'users#index', as: 'index'
+  #get '/new', to: 'users#new', as: 'new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  #root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

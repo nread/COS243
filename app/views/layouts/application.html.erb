@@ -12,22 +12,48 @@
   <div class="alert alert-<%=level %>"><% message %></div>
   <% end %>
     
-  <header class="navbar navbar-fixed-top navbar-inverse">
+ <!-- <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <div class="container">
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Current Users",    'index' %></li>
+              <li <%=if current_page?(root_path) then 'class=active' end%>>
+                <%= link_to "Home", "root_path" %>
+              </li>
+              <li><%= link_to "Users",    'users_path' %></li>
               <li><%= link_to "Sign Up",    'new' %></li>
             </ul>
           </nav>
         </div>
       </div>
-  </header>
+  </header>-->
   
   <div class="container">
   <%= yield %>
   </div>
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation" >
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <!--<div class="collapse navbar-collapse navbar-ex1-collapse">-->
+    <ul class="nav navbar-nav">
+      <li <%=if current_page?(root_path) then 'class=active' end%>>
+                <%= link_to "Game Contest Server", "root_path" %>
+              </li>
+      <li><%= link_to "Users",    'users_path' %></li>
+      <li><%= link_to "Sign Up",    'signup_path' %></li>
+      
+    </ul>
+  <!--</div><!-- /.navbar-collapse -->-->
+</nav>
 
 </body>
 </html>
