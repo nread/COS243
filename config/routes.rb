@@ -1,10 +1,14 @@
 GameContestServer::Application.routes.draw do
   root 'users#index'
   resources :users
-  #get 'signup', to: 'users#new', as: 'signup'
-  match '/signup_path', to: 'users#new',  via: 'get'
-  match '/root_path', to: 'users#index', via: 'get'
-  match '/users_path', to: 'users#index', via: 'get'
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  
+  #match '/signup_path', to: 'users#new',  via: 'get'
+  #match '/root_path', to: 'users#index', via: 'get'
+  #match '/users_path', to: 'users#index', via: 'get'
   #get '/index', to: 'users#index', as: 'index'
   #get '/new', to: 'users#new', as: 'new'
   # The priority is based upon order of creation: first created -> highest priority.
