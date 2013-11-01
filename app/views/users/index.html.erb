@@ -1,4 +1,9 @@
 <H1>List of users</H1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>You have successfully delete a user</p>
+  </div>
+<% end %>
 <p><%= @users.length%> users</p>
 <ul>
   <%= render @users %>

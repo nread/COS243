@@ -19,14 +19,34 @@
 
   <!-- Collect the nav links, forms, and other content for toggling -->
     <ul class="nav navbar-nav">
+      
+      <% if !logged_in? %>
+        <li <%=if current_page?(login_path) then 'class=active' end%>>
+          <%= link_to "Log In",    login_path %></li>
       <li <%=if current_page?(root_path) then 'class=active' end%>>
-            <%= link_to "Game Contest Server", root_path %></li>        
+            <%= link_to "Home", root_path %></li> 
+      <li <%=if current_page?(root_path) then 'class=active' end%>>
+            <%= link_to "Game Contest Server", root_path %></li> 
+      <li <%=if current_page?(users_path) then 'class=active' end%>>
+            <%= link_to "Users",    users_path %></li>
+        <li <%=if current_page?(signup_path) then 'class=active' end%>>
+              <%= link_to "Sign Up",    signup_path %></li>
+      <% end %>
+      
+      <% if logged_in? %>
+      <li <%=if current_page?(root_path) then 'class=active' end%>>
+            <%= link_to "Home", root_path %></li> 
+      <li <%=if current_page?(root_path) then 'class=active' end%>>
+            <%= link_to "Game Contest Server", root_path %></li> 
       <li <%=if current_page?(users_path) then 'class=active' end%>>
             <%= link_to "Users",    users_path %></li>
       <li <%=if current_page?(edit_user_path(current_user)) then 'class=active' end%>>
-        <%= link_to "Edit",     edit_user_path(current_user) %></li>
-      <li <%=if current_page?(signup_path) then 'class=active' end%>>
-            <%= link_to "Sign Up",    signup_path %></li>
+        <%= link_to "Settings",     edit_user_path(current_user) %></li>
+      <li <%=if current_page?(user_path(current_user)) then 'class=active' end%>>
+            <%= link_to "Profile",    user_path(current_user) %></li>
+      <li> <%= link_to "Log Out",    session_path(current_user), method: :delete %></li>
+      <% end %>
+      
     </ul>
 </nav>
 

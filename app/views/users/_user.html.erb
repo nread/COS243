@@ -1,5 +1,11 @@
 <li> 
   <%= link_to user.username, user_path(user) %>
-  |
-  <%= link_to 'delete', user_path(user), method: :delete, data: {confirm: 'Do you really want to delete user: #{user.username}?' } %> 
+  <% if current_user %>
+    <% if(current_user.admin) %>
+      <% if !user.admin %>
+      |
+      <%= link_to 'delete', user_path(user), method: :delete, data: {confirm: 'Do you really want to delete user: #{user.username}?' } %> 
+      <% end %>
+    <% end %>
+  <% end %>
 </li>

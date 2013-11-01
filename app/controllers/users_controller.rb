@@ -2,15 +2,16 @@ class UsersController < ApplicationController
   before_action :ensure_user_logged_in, only:[:edit,:update,:index]
   before_action :ensure_correct_user, only:[:edit,:update]
   before_action :ensure_admin_user, only:[:destroy]
-  def new #to get the login fomr
+  def new #to get the login form
 		@user = User.new
 	end
   
   def create #to create the user and add to DB
 		@user = User.new(permitted_params)
     if @user.save then
-      flash[:success] = "Welcome to the site: #{@username}"
-			redirect_to @user #type of response that the server can give to the browser.
+      flash[:success] = "Welcome"
+      cookies.signed[:user_id] = @user.id
+      redirect_to @user #type of response that the server can give to the browser.
 		else
 			render 'new'
 		end
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
+    
   def index
     @users = User.all
   end
@@ -40,6 +42,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    flash[:success] = "Successfully deleted user"
     redirect_to users_path
   end  
   

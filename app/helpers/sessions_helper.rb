@@ -10,4 +10,8 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+  
+  def sign_in(user)
+    @current_user ||= user.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
+  end
 end

@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
   
   def create
-    #@user = nil
     @user = User.find_by(username: params[:username])
     @user = 
     if @user && @user.authenticate(params[:password])
@@ -19,5 +18,7 @@ class SessionsController < ApplicationController
     
   def destroy
     cookies.signed[:user_id] = nil
+    flash[:logged_out]
+    redirect_to login_path
   end
 end

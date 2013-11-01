@@ -1,2 +1,7 @@
 <H1>User info</H1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>Welcome</p>
+  </div>
+<% end %>
   <p> <%= @user.username %>: <%= @user.email %> </p>

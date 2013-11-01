@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :referees
+  has_many :players
+  has_many :contests
   #attr_accessor :username, :password, :confirmation
   has_secure_password
   
