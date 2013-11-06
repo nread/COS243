@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20131030135036) do
     t.text     "description"
     t.string   "name"
     t.boolean  "downloadable",  default: false
-    t.boolean  "playable",      default: true
+    t.boolean  "playable",      default: false
     t.integer  "user_id"
     t.integer  "contest_id"
     t.datetime "created_at"

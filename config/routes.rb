@@ -4,7 +4,7 @@ GameContestServer::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
-  #get 'logout', to: 'sessions#destroy', as: 'logout'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
   
   #match '/signup_path', to: 'users#new',  via: 'get'
   #match '/root_path', to: 'users#index', via: 'get'

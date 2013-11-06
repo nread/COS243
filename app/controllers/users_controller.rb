@@ -31,18 +31,26 @@ class UsersController < ApplicationController
     
   def update
     @user = User.find(params[:id])
-    if @user.update(permitted_params) then
-      flash[:success] = "Successfully made updates to #{@username}"
-			redirect_to @user
-		else
-      render 'edit'
-		end
+    /if !@user=current_user? then
+      flash[:warning] = "Cannot edit this user"
+      redirect_to root_path
+    else/
+      if @user.update(permitted_params) then
+        flash[:success] = "Successfully made updates to #{@username}"
+			  redirect_to @user
+		  else
+        render 'edit'
+      end
+		/end/
   end
     
   def destroy
     @user = User.find(params[:id])
+    if @user.admin
+      redirect_to root_path
+    end
     @user.destroy
-    flash[:success] = "Successfully deleted user"
+    flash[:success] = "Successfully deleted user"      
     redirect_to users_path
   end  
   
