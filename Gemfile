@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Validates that date input is a valid calendar day
+gem 'validates_timeliness', github: 'softace/validates_timeliness', branch: 'support_for_rails4'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
