@@ -4,9 +4,18 @@ class Player < ActiveRecord::Base
   has_many :player_matches
   has_many :matches, through: :player_matches
   
-  validates :user_id, presence: true
-  validates :contest_id, presence: true
-  validates :description, :downloadable, :playable, presence: true
+  validates :user, presence: true
+  validates :contest, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
+  validates :file_location, presence: true
+  validate :check_location
+  
+  def check_location
+    if self.file_location && !File.exists?(self.file_location)
+      errors.add(:file_location, "is invalid")
+    end
+  end 
   
   def upload=(uploaded_file)
     if uploaded_file.nil?

@@ -48,6 +48,10 @@
             <%= link_to "Create Referee",    new_referee_path %>
       <li <%=if current_page?(referees_path) then 'class-active' end%>>
             <%= link_to "My Referees",    referees_path %>
+      <li <%=if current_page?(new_referee_path) then 'class-active' end%>>
+            <%= link_to "Create Contest",    new_contest_path %>
+      <li <%=if current_page?(referees_path) then 'class-active' end%>>
+            <%= link_to "My Contests",    contests_path %>
       <li> <%= link_to "Log Out",    logout_path(current_user), method: :delete %></li>
       <% end %>
       
