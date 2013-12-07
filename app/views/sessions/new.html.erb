@@ -2,6 +2,11 @@
 
 <%=form_tag sessions_path do%>
 
+<% if flash[:warning] %>
+  <div class='alert alert-warning' >
+    <p>Must be logged in for this function</p>
+  </div>
+<% end %>
 <% if flash[:danger] %>
   <div class='alert alert-danger' >
     <p>Invalid</p>

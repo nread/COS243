@@ -4,4 +4,32 @@
     <p>Welcome</p>
   </div>
 <% end %>
-  <p> <%= @user.username %>: <%= @user.email %> </p>
+<p>Name: <%= @user.username %> | <%= link_to "edit", edit_user_path(@user) %></p>
+
+<ul>
+  <li>Email: <%= @user.email %></li>
+  <li>Chat Url: <%= @user.chat_url %></li>
+</ul>
+
+<% if  @user.contest_creator? %>
+<h2>Referees</h2>
+<h4><%= @user.referees.length%> referees</h4>
+<ul>
+  <% @user.referees.each do |list| %>
+  <li> <%=  link_to list.name, referee_path(list) %>
+    |
+  <%= link_to 'delete', referee_path(list), method: :delete, data: {confirm: 'Do you really want to delete this referee?' } %> </li><% end %>
+<%# render "users/_user_referees.html.erb", collection: @user.referees, as: :referee%>
+</ul>
+<p><%= link_to "New Referee", new_referee_path %></p>
+<% end %>
+
+<h2>Players</h2>
+<h4><%=@user.players.length%> players</h4>
+<ul>
+  <% @user.players.each do |list| %>
+  <li> <%= link_to list.name, player_path(list) %>
+    |
+  <%= link_to 'delete', player_path(list), method: :delete, data: {confirm: 'Do you really want to delete this player?' } %> </li><% end %>
+<%# render "users/_user_players.html.erb", collection: @user.players, as: :player%>
+</ul>
