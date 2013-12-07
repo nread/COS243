@@ -4,7 +4,7 @@ class Match < ActiveRecord::Base
   has_many :players, through: :player_matches
   
   validates :manager, presence: true
-  validates :manager_type, presence: true
+  #validates :manager_type, presence: true
   validates :status, presence: true
   validates_date :completion, :on_or_before => lambda { Time.now.change(:usec =>0) }, :if => :check_completed_things
   validates_datetime :earliest_start, :if => :check_start_things

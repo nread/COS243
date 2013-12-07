@@ -58,15 +58,15 @@ class UsersController < ApplicationController
 
   def ensure_correct_user
     @user = User.find(params[:id])
-    redirect_to root_path unless current_user?(@user)
+    redirect_to root_path, flash: { :danger => "You are logged in and cannot perform that action!" } unless current_user?(@user)
   end
     
   def ensure_admin_user
-      redirect_to users_path unless current_user.admin?
+    redirect_to root_path, flash: { :danger => "You are logged in and cannot perform that action!" } unless current_user.admin?
   end
     
   def ensure_not_logged_in
-    redirect_to root_path, flash: { :warning => "You are logged in and cannot perform that action!" } unless !logged_in?
+    redirect_to root_path, flash: { :danger => "You are logged in and cannot perform that action!" } unless !logged_in?
   end  
     
   private 
