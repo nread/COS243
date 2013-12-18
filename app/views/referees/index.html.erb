@@ -1,0 +1,9 @@
+<H1>List of referees</H1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>You have successfully delete a referee</p>
+  </div>
+<% end %>
+<ul>
+  <%= render @referees %>
+</ul>

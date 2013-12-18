@@ -1,0 +1,10 @@
+<H1>List of contest</H1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>You have successfully delete a contest</p>
+  </div>
+<% end %>
+<p><%- @contests.length %> Contest</p>
+<ul>
+  <%= render @contests %>
+</ul>

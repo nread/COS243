@@ -1,0 +1,9 @@
+<li> 
+  <%= link_to referee.name, referee_path(referee) %>
+  <% if current_user %>
+      |
+      <%= link_to 'edit', edit_referee_path(referee) %>
+      |
+      <%= link_to 'delete', referee_path(referee), method: :delete, data: {confirm: 'Do you really want to delete user: #{user.username}?' } %> 
+  <% end %>
+</li>

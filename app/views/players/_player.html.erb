@@ -1,0 +1,9 @@
+<li> 
+  <%= link_to player.name, player_path(player) %>
+  <% if current_user %>
+      |
+      <%= link_to 'edit', edit_player_path(player) %>
+      |
+      <%= link_to 'delete', player_path(player), method: :delete, data: {confirm: 'Do you really want to delete player: #{player.name}?' } %> 
+  <% end %>
+</li>

@@ -1,0 +1,10 @@
+<H1>List of players</H1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>You have successfully delete a player</p>
+  </div>
+<% end %>
+<p><%= @players.length%> players</p>
+<ul>
+  <%= render @players %>
+</ul>

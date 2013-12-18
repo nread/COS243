@@ -1,0 +1,13 @@
+<h1>Referee Information</h1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>Referee created</p>
+  </div>
+<% end %>
+
+<p>Name: <%= @referee.name %> </p>
+<p>User <%=@referee.user.username %> </p>
+<p><%= link_to "Rules", @referee.rules_url %> </p>
+<p>Players Per Game: <%=@referee.players_per_game %> </p>
+<ul><% @referee.contests.each do |f| %>
+  <li>Contest <%= link_to f.name, contest_path(f) %></li><% end %></ul>

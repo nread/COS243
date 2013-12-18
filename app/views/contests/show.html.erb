@@ -1,0 +1,22 @@
+<h1>Contest Information</h1>
+<% if flash[:success] %>
+  <div class='alert alert-success' >
+    <p>Contest created</p>
+  </div>
+<% end %>
+
+<p>Name: <%= @contest.name %> | <%= link_to "edit", edit_contest_path(@contest) %> </p>
+<ul>
+  <li>Contest Creator: <%= link_to @contest.user.username, user_path(@contest.user) %></li>
+  <li>Contest Type: <%= @contest.contest_type %></li>
+  <li>Start Time: <%= distance_of_time_in_words_to_now(@contest.start) %></li>
+  <li>Deadline: <%= distance_of_time_in_words_to_now(@contest.deadline) %></li>
+  <li>Description: <%= @contest.description %></li>
+  <li>Referee: <%= link_to @contest.referee.name, referee_path(@contest.referee) %></li>
+  <li>Players: <ul><% @contest.players.each do |f| %>
+    <li><%= link_to f.name, player_path(f) %></li><%end %></ul></li>
+  <li>Matches: <ul><% @contest.matches.each do |m| %>
+    <li><%= link_to m.status, match_path(m) %></li><%end %></ul></li>
+</ul>
+
+<p> <%= link_to 'New Player', new_contest_player_path(@contest) %></p>
